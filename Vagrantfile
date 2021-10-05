@@ -1,6 +1,5 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
-default_box = "generic/opensuse42"
 
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
 # configures the configuration version (we support older styles for
@@ -13,30 +12,8 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
-
-  config.vm.define "master" do |master|
-    master.vm.box = default_box
-    master.vm.hostname = "master"
-    master.vm.network 'private_network', ip: "192.168.0.200",  virtualbox__intnet: true
-    master.vm.network "forwarded_port", guest: 22, host: 2222, id: "ssh", disabled: true
-    master.vm.network "forwarded_port", guest: 22, host: 2000 # Master Node SSH
-    master.vm.network "forwarded_port", guest: 6443, host: 6443 # API Access
-    for p in 30000..30100 # expose NodePort IP's
-      master.vm.network "forwarded_port", guest: p, host: p, protocol: "tcp"
-      end
-    master.vm.provider "virtualbox" do |v|
-      v.memory = "3072"
-      v.name = "master"
-      end
-    master.vm.provision "shell", inline: <<-SHELL
-      sudo zypper refresh
-      sudo zypper --non-interactive install bzip2
-      sudo zypper --non-interactive install etcd
-      sudo zypper --non-interactive install apparmor-parser
-      curl -sfL https://get.k3s.io | sh -
-    SHELL
-  end
-
+  config.vm.box = "roboxes/opensuse15"
+ 
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
