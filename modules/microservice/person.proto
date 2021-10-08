@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+//mapped message
+
+message PersonMessage {
+  string first_name = 1;
+  string last_name = 2;
+  string company_name = 3;
+  optional int32 id = 4;
+}
+
+message PersonList {
+  repeated PersonMessage persons = 1;
+}
+
+message PersonRequest{
+  optional int32 id = 1;
+}
+
+//mapped service
+
+service PersonService {
+  rpc Create(PersonMessage) returns (PersonMessage);
+  rpc Get(PersonRequest) returns (PersonMessage);
+  rpc GetAll(PersonRequest) returns (PersonList);
+}
