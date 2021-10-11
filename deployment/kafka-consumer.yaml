@@ -28,7 +28,7 @@ spec:
         service: kafka-consumer
     spec:
       containers:
-      - image: julianafogg/kafka_message_passing:latest
+      - image: julianafogg/kafka-consumer:latest
         name: kafka-consumer
         imagePullPolicy: Always
       restartPolicy: Always
