@@ -1,0 +1,39 @@
+Architecture Design for UdaConnect from Monoliths to 3 microservices
+
+Person Service 
+Location Service 
+Connection Service 
+
+
+ Design should be able to handle ingress of a large volume of data - Kafka and gRPC are highly scalable  that allows for more efficient inter-process communication than conventional REST/HTTP-based communication.
+
+ Services should run in containers- each service has its own dockefile
+
+ Cost and development time are minimized -each module has its own deployment process minimizing time and cost 
+
+__________________________________________________________________________________________________________________________________________________________ 
+
+gRPC - I chose grpc communication for the below services beacuse it offers a huge performance improvements and reduced response time as compared to REST APIs 
+Also mobile devices can integrate well with gRPC without an intermediary proxy to the backend service.
+
+ person_service  
+
+ connection_service 
+
+ control_service
+
+__________________________________________________________________________________________________________________________________________________________
+
+Kafka - I chose Kafka because unlike messaging queues, Kafka is a highly scalable and can help quickly build by providing a single event streaming platform to process with real-time data while 
+multiple db create commands could block the database.
+
+Person Service 
+
+Location Service
+
+ Kafka is capable of operating very quickly – large clusters can be capable of monitoring and reacting to millions of changes to a data.
+
+
+
+
+
