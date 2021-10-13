@@ -31,7 +31,7 @@ spec:
         service: grpc-api
     spec:
       containers:
-      - image: julianafogg/grpc-api:latest
+      - image: julianafogg/grpc-api:v1.0.0
         name: grpc-api
         imagePullPolicy: Always
         env:

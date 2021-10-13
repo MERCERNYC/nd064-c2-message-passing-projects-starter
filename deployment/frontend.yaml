@@ -31,7 +31,7 @@ spec:
         service: frontend
     spec:
       containers:
-      - image: julianafogg/frontend:latest
+      - image: julianafogg/frontend:v1.0.0
         name: frontend
         imagePullPolicy: Always
         resources:

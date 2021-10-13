@@ -31,7 +31,7 @@ spec:
         service: udaconnect-location-api
     spec:
       containers:
-      - image: julianafogg/udaconnect-location-api:latest
+      - image: julianafogg/udaconnect-location-api:v1.0.0
         name: udaconnect-location-api
         imagePullPolicy: Always
         env:

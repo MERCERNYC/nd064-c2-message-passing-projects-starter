@@ -31,7 +31,7 @@ spec:
         service: connection-service
     spec:
       containers:
-        - image: julianafogg/connection-service:latest
+        - image: julianafogg/connection-service:v1.0.0
           name: connection-service
           imagePullPolicy: Always
           env:
