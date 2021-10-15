@@ -10,4 +10,4 @@ EXPOSE 5000
 
 # RUN python3 -m grpc_tools.protoc -I ./ --python_out=./ --grpc_python_out=./ services.proto
 COPY . .
-CMD ["python", "app.py"]
+CMD ["python", "consumer.py"]
