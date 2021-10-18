@@ -31,6 +31,9 @@ Vagrant.configure("2") do |config|
   config.vm.network "forwarded_port", guest: 6443, host: 6443
   config.vm.network "forwarded_port", guest: 30000, host: 30000
   config.vm.network "forwarded_port", guest: 30001, host: 30001
+  config.vm.network "forwarded_port", guest: 30004, host: 30004
+  config.vm.network "forwarded_port", guest: 30007, host: 30007
+  config.vm.network "forwarded_port", guest: 30006, host: 30006
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
   # config.vm.network "private_network", ip: "192.168.33.10"

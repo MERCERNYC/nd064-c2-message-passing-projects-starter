@@ -1,0 +1,25 @@
+
+You can access gRPC servers through person-service and location-service api.
+
+For example:
+
+GET http://localhost:30001/api/persons
+GET http://localhost:30001/api/persons/5
+
+POST http://localhost:30001/api/persons
+{
+    "first_name": "example_name",
+    "last_name": "example_last_name",
+    "company_name": "example_company"
+}
+
+GET http://localhost:30001/api/locations
+GET http://localhost:30001/api/locations/1
+
+POST http://localhost:30001/api/locations
+{
+    "person_id": "example_id",
+    "creation_time": "example_creation_time",
+    "latitude": "example_latitude",
+    "longitude": "example_longitude",
+}

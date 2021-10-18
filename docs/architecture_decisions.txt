@@ -16,11 +16,8 @@ ________________________________________________________________________________
 gRPC - I chose grpc communication for the below services beacuse it offers a huge performance improvements and reduced response time as compared to REST APIs 
 Also mobile devices can integrate well with gRPC without an intermediary proxy to the backend service.
 
- person_service  
-
- connection_service 
-
- control_service
+Person Service 
+Location Service 
 
 __________________________________________________________________________________________________________________________________________________________
 
@@ -31,7 +28,7 @@ Person Service
 
 Location Service
 
- Kafka is capable of operating very quickly – large clusters can be capable of monitoring and reacting to millions of changes to a data.
+Kafka is capable of operating very quickly – large clusters can be capable of monitoring and reacting to millions of changes to a data.
 
 
 
