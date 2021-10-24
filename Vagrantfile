@@ -1,5 +1,6 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
+default_box = "roboxes/opensuse15"
 
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
 # configures the configuration version (we support older styles for
@@ -12,7 +13,30 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
-  config.vm.box = "roboxes/opensuse15"
+
+  config.vm.define "main" do |main|
+    main.vm.box = default_box
+    main.vm.hostname = "main"
+    main.vm.network 'private_network', ip: "192.168.0.200",  virtualbox__intnet: true
+    main.vm.network "forwarded_port", guest: 22, host: 2222, id: "ssh", disabled: true
+    main.vm.network "forwarded_port", guest: 22, host: 2000 # Master Node SSH
+    main.vm.network "forwarded_port", guest: 6443, host: 1234 # API Access
+    for p in 30000..30100 # expose NodePort IP's
+     main.vm.network "forwarded_port", guest: p, host: p, protocol: "tcp"
+      end
+     main.vm.provider "virtualbox" do |v|
+      v.memory = "3072"
+      v.name = "main"
+      end
+    main.vm.provision "shell", inline: <<-SHELL
+      sudo zypper refresh
+      sudo zypper --non-interactive install bzip2
+      sudo zypper --non-interactive install etcd
+      sudo zypper --non-interactive install apparmor-parser
+      curl -sfL https://get.k3s.io | sh -
+    SHELL
+  end
+
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -27,13 +51,9 @@ Vagrant.configure("2") do |config|
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine and only allow access
+  # via 127.0.0.1 to disable public access
+  # config.vm.network "forwarded_port", guest: 80, host: 8080, host_ip: "127.0.0.1"
 
-  config.vm.network "forwarded_port", guest: 6443, host: 6443
-  config.vm.network "forwarded_port", guest: 30000, host: 30000
-  config.vm.network "forwarded_port", guest: 30001, host: 30001
-  config.vm.network "forwarded_port", guest: 30004, host: 30004
-  config.vm.network "forwarded_port", guest: 30007, host: 30007
-  config.vm.network "forwarded_port", guest: 30006, host: 30006
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
   # config.vm.network "private_network", ip: "192.168.33.10"

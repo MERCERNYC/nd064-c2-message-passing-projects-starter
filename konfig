@@ -1,0 +1,32 @@
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority: /Users/julianafogg/.minikube/ca.crt
+    extensions:
+    - extension:
+        last-update: Sat, 23 Oct 2021 11:13:20 EDT
+        provider: minikube.sigs.k8s.io
+        version: v1.23.2
+      name: cluster_info
+    server: https://127.0.0.1:60148
+  name: minikube
+contexts:
+- context:
+    cluster: minikube
+    extensions:
+    - extension:
+        last-update: Sat, 23 Oct 2021 11:13:20 EDT
+        provider: minikube.sigs.k8s.io
+        version: v1.23.2
+      name: context_info
+    namespace: default
+    user: minikube
+  name: minikube
+current-context: minikube
+kind: Config
+preferences: {}
+users:
+- name: minikube
+  user:
+    client-certificate: /Users/julianafogg/.minikube/profiles/minikube/client.crt
+    client-key: /Users/julianafogg/.minikube/profiles/minikube/client.key
