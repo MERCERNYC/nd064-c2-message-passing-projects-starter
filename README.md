@@ -100,6 +100,10 @@ These pages should also load on your web browser:
 Test
 Access the http://localhost:30001/api/persons for testing
 
+GRPC 
+python3 -m grpc_tools.protoc -I./ --python_out=./ --grpc_python_out=./ coordinates.proto
+
+
 #### Deployment Note
 You may notice the odd port numbers being served to `localhost`. [By default, Kubernetes services are only exposed to one another in an internal network](https://kubernetes.io/docs/concepts/services-networking/service/). This means that `udaconnect-app` and `udaconnect-api` can talk to one another. For us to connect to the cluster as an "outsider", we need to a way to expose these services to `localhost`.
 

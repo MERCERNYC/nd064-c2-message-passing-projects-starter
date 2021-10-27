@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    service: location-api
+  name: location-api
+spec:
+  ports:
+  - name: "5005"
+    port: 5005
+    targetPort: 5005
+    nodePort: 30003
+  selector:
+    service: location-api
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: location-api
+  name: location-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: location-api
+  template:
+    metadata:
+      labels:
+        service: location-api
+    spec:
+      containers:
+      - image: julianafogg/location-api:v1.0.0
+        name: location-api-container
+        imagePullPolicy: Always
+        env:
+        - name: KAFKA_URL
+          valueFrom:
+            configMapKeyRef:
+              name: config-location-event-map
+              key: KAFKA_URL
+        - name: KAFKA_TOPIC
+          valueFrom:
+            configMapKeyRef:
+              name: config-location-event-map
+              key: KAFKA_TOPIC
+        - name: PYTHONUNBUFFERED
+          value: '0'
+      restartPolicy: Always

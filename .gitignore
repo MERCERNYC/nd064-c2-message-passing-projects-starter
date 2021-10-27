@@ -123,3 +123,6 @@ app/app-test.db
 
 .vagrant
 .ds_store
+.get_helm.sh
+.minikube-darwin-amd64
+.konfig
