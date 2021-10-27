@@ -79,16 +79,11 @@ Afterwards, you can test that `kubectl` works by running a command like `kubectl
 
 https://minikube.sigs.k8s.io/docs/start/
 
-### Steps ro set up Kafka with Helm Chart
+### Steps to set up Kafka with Helm Chart
 
 1. Now, you can add the chart repository below.
 
-$ helm repo add bitnami https://charts.bitnami.com/bitnami
-
-$ helm repo list
-
-NAME        	URL                                           
-bitnami     	https://charts.bitnami.com/bitnami            
+$ helm repo add bitnami https://charts.bitnami.com/bitnami        
 
 $ helm install kafka-release bitnami/kafka  
 
@@ -97,7 +92,6 @@ $ helm install kafka-release bitnami/kafka
 Folder - Inside Location-consumer-microservice 
 
 python3 -m grpc_tools.protoc -I./ --python_out=./ --grpc_python_out=./ coordinates.proto
-
 
 ### Run in each folder microservice $ kubectl apply -f deployment/ 
 
