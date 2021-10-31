@@ -1,6 +1,5 @@
 Architecture Design for UdaConnect from Monoliths to 4 microservices 
 
-
 Person Microservice - I kept RESTFul API service responsible to keep user information.
 Location Consumer/Producer Microservice
 Connection Microservice 
@@ -14,13 +13,12 @@ gRPC - I chose grpc communication for the below services beacuse it offers a hug
 Also mobile devices can integrate well with gRPC without an intermediary proxy to the backend service.
 
 Location Consumer/Producer Microservice
-   Communication is established using gRPC based in the fact of efficiency and the requirements about lot of users sending data.gets data from Person microservice when a request to find out possible connection is made
+Communication is established using gRPC based in the fact of efficiency and the requirements about lot of users sending data.gets data from Person microservice when a request to find out possible connection is made
 
 __________________________________________________________________________________________________________________________________________________________
 
 Kafka - I chose Kafka because unlike messaging queues, Kafka is a highly scalable and can help quickly build by providing a single event streaming platform to process with real-time data while 
 multiple db create commands could block the database.
-
 
 Location producer microservice has a Kafka cluster that receives a location data that will be consumed by location consumer
 and this data will be stored in postgres database.

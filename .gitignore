@@ -126,3 +126,5 @@ app/app-test.db
 .get_helm.sh
 .minikube-darwin-amd64
 .konfig
+.logs.txt
+.konfig

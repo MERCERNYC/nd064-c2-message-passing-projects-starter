@@ -1,5 +1,9 @@
 To deploy a Kafka in kubernetes, follow the steps below:
 
+Bitnami Charts Using Minikube
+
+Minikube start
+
 1. Install helm (at least version 3.2.1)
 
 2. Include the helm repo from bitnami
